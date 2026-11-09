@@ -1,15 +1,18 @@
 #Data-Driven Framework Analysis and Predicting Waste Generation in Nigeria for Sustainable Waste Management
 #Project overview
-#waste_pipelie.py
-#waste_projection.py
-"""
--Driver-based projection of waste generation and sustainability indicators for Nigeria (2023-2035).     
-Generation(state, t) = Generation_2023(state) x PopIndex(t) x PerCapitaMultiplier(t) x BaselineScale
-PopIndex(t)              = UN national population(t) / population(2023)          [driver 1: population]
-PerCapitaMultiplier(t)   = (UrbanShare(t) / UrbanShare(2023)) ** elasticity       [driver 2: urbanization]
-Organic share(state, t)     = share_2023 + slope x per_capita_2023 x (multiplier - 1) [driver 3: composition shift]
-"""
--
+-This project studies how much waste Nigeria produces now and how much it is likely to produce up to 2035. It uses real data and shows what the numbers mean for managing waste sustainably.
+-There are three parts:
+`#waste_pipelie.py`
+- Describe: clean the available data and map where waste is generated and what it is made of.
+- Test: use the Lagos monthly dumpsite records to find which forecasting method works best.
+`#waste_projection.py`
+- Project: estimate national and state waste to 2035 under low, central and high assumptions about how fast cities grow.
+#Research Questions
+- Data quality: Which of the available waste data can be trusted, and what corrections does it need?
+- Spatial pattern: Where in Nigeria is waste generated, and how much of it is organic?
+- Forecasting: Which simple method best predicts waste reaching the Lagos dumpsites, and how much of Lagos’s estimated waste actually reaches them?
+- Projection: How much waste and organic waste will Nigeria generate by 2035 if population and urbanisation grow as projected?
+
 #Objecctives
 - i.	assemble, screen and validate the available state-level and city-level waste data and document every correction.
 - ii.	characterise the spatial distribution and composition of waste generation across states and geopolitical zones.
@@ -24,3 +27,20 @@ Organic share(state, t)     = share_2023 + slope x per_capita_2023 x (multiplier
 - 
 #Tools & Technologies
 - Analyses were run in Python using pandas, NumPy, statsmodels, GeoPandas and Matplotlib.
+#Methodology
+- 1. Collect the data. Four sources were used: the state estimates, the Lagos monthly records, the state boundaries, and UN population data. Published studies supplied the figures used to check and calibrate them.
+- 2. Clean and check. The data was screened for errors. One wrong entry (Olushosun, June 2023) was fixed, and a 50% drop in trips at one dumpsite (Solous) was flagged. Every state name was matched to the map.
+- 3. Describe the states. I calculated waste per person, total waste, organic share, and density for each state and zone, and drew maps. I also tested whether states with more waste per person have a lower organic share.
+- 4. Test forecasting methods on Lagos.
+`Seven methods were tried, from “same as last month” to a straight-line trend.`
+- Each one was tested like a practice exam: it forecast months it had not seen, and its guesses were compared with reality. This was repeated from seven starting points.
+- The method with the smallest average error was the 12-month linear trend (6.4%).
+- The 2025 and 2026 results are shown as three scenarios (low, central and high).
+- Lagos receipts were compared with estimated waste generation to see what share reaches the dumpsites.
+- 5. Project waste to 2035.
+- Each state’s 2023 waste is multiplied by two growth factors: population growth and a rise in waste per person as cities grow.
+- Three scenarios were run. In the low scenario waste per person stays flat. In the central scenario it rises moderately (calibrated to a World Bank projection). In the high scenario it rises as fast as the urban share.
+- The organic share is lowered as waste per person rises, following the pattern across states.
+- 6. Check the results. The calculations were done twice, in Python and in Excel, and gave the same answers. The state-level baseline was compared with World Bank figures, and a scaling factor shows how much the level would change.
+
+`Main limitation: the baseline level is the weakest point, and every state is assumed to grow at the national rate.`
