@@ -41,5 +41,20 @@
 - Three scenarios were run. In the low scenario waste per person stays flat. In the central scenario it rises moderately (calibrated to a World Bank projection). In the high scenario it rises as fast as the urban share.
 - The organic share is lowered as waste per person rises, following the pattern across states.
 - 6. Check the results. The calculations were done twice, in Python and in Excel, and gave the same answers. The state-level baseline was compared with World Bank figures, and a scaling factor shows how much the level would change.
+--
+## Key results
+
+| Result | Value |
+
+| National MSW, 2023 (state-file baseline) | 27.5 Mt (58.8% organic) |
+| Share from five states (Lagos, Kano, Rivers, Edo, Katsina) | 40.0% |
+| Lagos dumpsite receipts, 2022 / 2023 / 2024 | 1.90 / 1.75 / 1.39 Mt |
+| Best Lagos forecasting model | 12-month linear trend (MAPE 6.4%) |
+| Central projection, 2035 | 38.9 Mt (range 34.7 to 42.1 Mt) |
+| Organic share, 2023 to 2035 (central) | 58.8% to 56.8% |
+| Organic waste, 2023 to 2035 (central) | 16.2 Mt to 22.1 Mt |
+
+The baseline **level** is the main uncertainty: the state file gives 27.5 Mt for 2023, whereas interpolating World Bank figures gives about 43.5 Mt (scaling factor about 1.585).
+
 
 - `Main limitation: the baseline level is the weakest point, and every state is assumed to grow at the national rate.`
