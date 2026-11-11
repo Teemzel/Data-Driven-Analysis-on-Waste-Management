@@ -133,7 +133,3 @@ summary=dict(
  maxdiff=float((st.MSW_t_yr-st.MSW_t_yr_file).abs().max()))
 print(json.dumps(summary,indent=1,default=float))
 print(metrics.round(1).to_string())
-# persist for Excel step
-# clean.to_pickle('/home/claude/work/clean.pkl'); flags.to_pickle('/home/claude/work/flags.pkl'); bt.to_pickle('/home/claude/work/bt.pkl')
-# metrics.to_pickle('/home/claude/work/metrics.pkl'); fc.to_pickle('/home/claude/work/fc.pkl'); st.to_pickle('/home/claude/work/st.pkl'); y.to_pickle('/home/claude/work/y.pkl')
-# json.dump(summary,open('/home/claude/work/summary.json','w'),default=float)
